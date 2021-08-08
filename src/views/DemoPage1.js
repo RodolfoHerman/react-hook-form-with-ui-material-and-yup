@@ -1,16 +1,30 @@
-import { Button, Grid, TextField } from "@material-ui/core";
+import { Button, Grid, makeStyles, TextField } from "@material-ui/core";
 import React from "react";
+import Person from "../assets/icons/Person";
+import StyledInput from "../shared/inputs/StyledInput";
 
+const useStyle = makeStyles(() => ({
+    inputNome: {
+        "& input": {
+            color: "orange !important",
+        },
+    },
+
+}))
 
 const DemoPage1 = ({
     nextStep
 }) => {
+    const className = useStyle();
+
     return <form noValidate autoComplete="off">
         <Grid container>
             <Grid item>
                 <Grid container direction="column">
                     <Grid item>
-                        <TextField 
+                        <StyledInput 
+                            startIcon={<Person />}
+                            classes={className.inputNome}
                             type="text"
                             label="Nome completo"
                         />
