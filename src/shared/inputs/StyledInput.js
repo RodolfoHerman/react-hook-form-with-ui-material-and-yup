@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 
 const useStyle = makeStyles(() => ({
-    root: {
+    input: {
         marginBottom: 10,
 
         "& .MuiFilledInput-root": {
@@ -35,41 +35,49 @@ const StyledInput = (props) => {
     const className = useStyle();
 
     const {
+        inputRef,
         classes,
-        minRows,
         maxRows,
-        startIcon,
-        endIcon,
+        minRows,
+        iconStart,
+        iconEnd,
+        disabled,
+        maxLength,
+        readOnly,
         ...newProps
     } = props;
 
     return <TextField 
-        classes={{
-            root: clsx(className.root, classes)
-        }}
+        className={clsx(className.input, classes.input)}
         { ...newProps }
         InputLabelProps={{
             disableAnimation: true,
             shrink: true,
             variant: "outlined",
         }}
+        inputProps={{
+            maxLength: maxLength,
+        }}
         InputProps={{
             disableUnderline: true,
             minRows: minRows,
             maxRows: maxRows,
+            disabled: disabled,
+            readOnly: readOnly,
             endAdornment: (
-                endIcon && <InputAdornment position="end">
-                    { endIcon }
+                iconEnd && <InputAdornment position="end">
+                    { iconEnd }
                 </InputAdornment>
             ),
             startAdornment: (
-                startIcon && <InputAdornment position="start">
-                    { startIcon }
+                iconStart && <InputAdornment position="start">
+                    { iconStart }
                 </InputAdornment>
             )
         }}
         variant="filled"
         fullWidth
+        inputRef={inputRef}
     />
 }
 
