@@ -6,7 +6,7 @@ import clsx from 'clsx';
 
 const useStyle = makeStyles(() => ({
     input: {
-        marginBottom: 10,
+        marginBottom: 15,
 
         "& .MuiFilledInput-root": {
             marginTop: 10,
@@ -19,6 +19,11 @@ const useStyle = makeStyles(() => ({
 
         "& label.Mui-focused": {
             color: "rgba(0, 0, 0, 0.54) !important",
+            fontWeight: 800,
+        },
+
+        "& label.MuiInputLabel-root": {
+            fontWeight: 800,
         },
 
         "& input": {
