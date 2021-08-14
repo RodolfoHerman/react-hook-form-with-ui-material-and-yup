@@ -64,10 +64,10 @@ const StyledInput = (props) => {
             shrink: true,
             variant: "outlined",
         }}
-        inputProps={{
-            maxLength: maxLength,
-        }}
         InputProps={{
+            inputProps: {
+                maxLength: maxLength,
+            },
             disableUnderline: true,
             minRows: minRows,
             maxRows: maxRows,
