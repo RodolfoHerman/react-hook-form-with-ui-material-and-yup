@@ -6,7 +6,10 @@ import Person from "../assets/icons/Person";
 import Input from "../shared/inputs/Input/Input";
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
+import InputNumber from "../shared/inputs/InputNumber/InputNumber";
 
+
+const tempoMesesErrorText = "Entre 2 e 24 meses";
 
 const useStyle = makeStyles(() => ({
     input: {
@@ -18,6 +21,17 @@ const useStyle = makeStyles(() => ({
 
 const schema = yup.object().shape({
     nome: yup.string().nullable().required("Nome é obrigatório"),
+    tempoMeses: yup.string()
+        .nullable()
+        .test(
+            "is-meses",
+            tempoMesesErrorText,
+            (value) => {
+                const number = parseFloat(value);
+
+                return number >= 2 && number <= 24;
+            }
+        ).required(tempoMesesErrorText),
 });
 
 const DemoPage1 = ({
@@ -31,6 +45,7 @@ const DemoPage1 = ({
 
     const {
         handleSubmit,
+        formState: { errors }
     } = methods;
 
     const onSubmit = (data) => {
@@ -68,7 +83,19 @@ const DemoPage1 = ({
                                 type="tel"
                                 mask="999.999.999-99"
                                 onlyNumber
-                                value="105.646.646-42"
+                                value="10564664642"
+                            />
+                        </Grid>
+                        <Grid item>
+                            <InputNumber 
+                                name="tempoMeses"
+                                label="Quantidade de meses"
+                                mask="## meses"
+                                placeholder="0 meses"
+                                suffix=" meses"
+                                helperText={!!errors.tempoMeses ? "" : tempoMesesErrorText}
+                                fixedDecimalScale={false}
+                                onlyNumber
                             />
                         </Grid>
                     </Grid>

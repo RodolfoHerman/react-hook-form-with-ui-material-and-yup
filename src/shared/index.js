@@ -1,7 +1,9 @@
 import Stepper from "./components/Stepper";
-import StyledInput from "./inputs/StyledInput";
+import Input from "./inputs/Input/Input";
+import InputNumber from "./inputs/InputNumber/InputNumber";
 
 export {
     Stepper,
-    StyledInput,
+    Input,
+    InputNumber,
 }
