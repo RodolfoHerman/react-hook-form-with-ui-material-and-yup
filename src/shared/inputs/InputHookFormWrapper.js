@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Controller, useFormContext } from 'react-hook-form';
 import StyledInput from './StyledInput';
 
@@ -43,22 +44,18 @@ const InputHookFormWrapper = (props) => {
         />
     }
 
-    const { Element, ...newProps } = props;
+    const { Element, name, value, ...newProps } = props;
     const { control, formState: { errors } } = formContext;
 
     return (
         <Controller 
-            name={props.name}
+            name={name}
             control={control}
-            defaultValue={props.value}
-            render={({ field: { onChange, onBlur, value, name, ref } }) => {
+            defaultValue={value}
+            render={({ field }) => {
                 return <Element 
                     {...newProps}
-                    inputRef={ref}
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    name={name}
-                    value={value}
+                    {...field}
                     errors={errors}
                 />
             }}

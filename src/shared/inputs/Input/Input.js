@@ -1,11 +1,11 @@
-import React, { memo, useCallback, useState } from "react";
+import React, { memo, useCallback } from "react";
 
 import InputMask from "react-input-mask";
 import { useControlled } from "../hooks/useControlled";
 import InputHookFormWrapper from "../InputHookFormWrapper";
 import StyledInput from "../StyledInput";
 
-const InputComponent = ({
+const InputComponent = React.forwardRef(({
     name,
     label,
     type = "text",
@@ -21,11 +21,10 @@ const InputComponent = ({
     placeholder,
     helperText,
     onChange,
-    inputRef,
     onBlur,
     errors,
     classes = {},
-}) => {
+}, ref) => {
     const [valueProp, setvalueProp] = useControlled({
         controlled: value,
         defaultState: "",
@@ -75,7 +74,7 @@ const InputComponent = ({
                     iconStart={iconStart}
                     iconEnd={iconEnd}
                     value={valueProp}
-                    inputRef={inputRef}
+                    inputRef={ref}
                     classes={classes}
                 />
             )}
@@ -84,7 +83,7 @@ const InputComponent = ({
         <StyledInput 
             onChange={handleInputChange(onChange)}
             onBlur={onBlur}
-            inputRef={inputRef}
+            inputRef={ref}
             name={name}
             value={valueProp}
             placeholder={placeholder}
@@ -100,7 +99,7 @@ const InputComponent = ({
             classes={classes}
         />
     )
-}
+})
 
 const Input = (
     props = {
