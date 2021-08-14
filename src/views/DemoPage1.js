@@ -1,8 +1,12 @@
-import { Button, Grid, makeStyles, TextField } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React from "react";
+
+import { Button, Grid, makeStyles } from "@material-ui/core";
 import { FormProvider, useForm } from "react-hook-form";
 import Person from "../assets/icons/Person";
 import Input from "../shared/inputs/Input/Input";
+import * as yup from "yup";
+import { yupResolver } from '@hookform/resolvers/yup';
+
 
 const useStyle = makeStyles(() => ({
     input: {
@@ -10,13 +14,18 @@ const useStyle = makeStyles(() => ({
             color: "orange !important",
         },
     },
-}))
+}));
+
+const schema = yup.object().shape({
+    nome: yup.string().nullable().required("Nome é obrigatório"),
+});
 
 const DemoPage1 = ({
     nextStep
 }) => {
     const methods = useForm({
         mode: "onTouched",
+        resolver: yupResolver(schema),
     });
     const className = useStyle();
 
