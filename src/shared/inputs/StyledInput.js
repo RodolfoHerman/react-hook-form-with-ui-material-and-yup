@@ -27,7 +27,11 @@ const useStyle = makeStyles(() => ({
 
         "& .MuiInputAdornment-positionStart": {
             margin: "0px !important",
-        }
+        },
+
+        "& p.MuiFormHelperText-contained": {
+            marginLeft: 6,
+        },
     }
 }))
 
