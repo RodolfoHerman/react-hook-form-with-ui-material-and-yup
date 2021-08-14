@@ -3,6 +3,7 @@ import React, { memo, useCallback } from "react";
 import InputMask from "react-input-mask";
 import { useControlled } from "../hooks/useControlled";
 import InputHookFormWrapper from "../InputHookFormWrapper";
+import PropTypes from "prop-types";
 import StyledInput from "../StyledInput";
 
 const InputComponent = React.forwardRef(({
@@ -60,16 +61,14 @@ const InputComponent = React.forwardRef(({
             onBlur={onBlur}
             disabled={disabled}
             readOnly={readOnly}
+            type={type}
         >
             {(inputprops) => (
                 <StyledInput 
                     {...inputprops}
                     label={label}
-                    type={type}
                     helperText={getHelper()}
                     error={!!errors[name]}
-                    disabled={disabled}
-                    readOnly={readOnly}
                     maxLength={maxLength}
                     iconStart={iconStart}
                     iconEnd={iconEnd}
@@ -120,5 +119,23 @@ const Input = (
         classes: undefined,
     }
 ) => <InputHookFormWrapper Element={InputComponent} {...props} />
+
+Input.propTypes = {
+    name: PropTypes.string.isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    value: PropTypes.string,
+    type: PropTypes.string,
+    onlyNumber: PropTypes.bool,
+    disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
+    maxLength: PropTypes.number,
+    iconStart: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    iconEnd: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    mask: PropTypes.string,
+    maskChar: PropTypes.string,
+    placeholder: PropTypes.string,
+    helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    classes: PropTypes.object,
+}
 
 export default memo(Input);
