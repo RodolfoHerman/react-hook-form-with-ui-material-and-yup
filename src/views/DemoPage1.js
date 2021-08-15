@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import InputNumber from "../shared/inputs/InputNumber/InputNumber";
 import RadioGroup from "../shared/inputs/RadioGroup/RadioGroup";
+import { TextArea } from "../shared";
 
 
 const tempoMesesErrorText = "Entre 2 e 24 meses";
@@ -34,6 +35,7 @@ const schema = yup.object().shape({
             }
         ).required(tempoMesesErrorText),
     sexo: yup.string().required("Sexo é obrigatório"),
+    texto: yup.string().required("Texto é obrigatório"),
 });
 
 const DemoPage1 = ({
@@ -114,6 +116,14 @@ const DemoPage1 = ({
                                         value: "feminino"
                                     },
                                 ]}
+                            />
+                        </Grid>
+                        <Grid item>
+                            <TextArea 
+                                name="texto"
+                                label="Informe um breve texto"
+                                minRows={2}
+                                maxRows={4}
                             />
                         </Grid>
                     </Grid>
