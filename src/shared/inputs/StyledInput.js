@@ -30,6 +30,10 @@ const useStyle = makeStyles(() => ({
             padding: "6px 10px",
         },
 
+        "& div.MuiFilledInput-multiline": {
+            padding: "6px 10px",
+        },
+
         "& .MuiInputAdornment-positionStart": {
             margin: "0px !important",
         },
