@@ -2,6 +2,8 @@ import React from "react";
 
 import { FormControlLabel, Radio, makeStyles } from '@material-ui/core';
 import clsx from "clsx";
+import RadioIcon from "../../assets/icons/RadioIcon";
+import CheckedRadioIcon from "../../assets/icons/CheckedRadioIcon";
 
 const useStyle = makeStyles(() => ({
     controlLabel: {
@@ -14,7 +16,7 @@ const useStyle = makeStyles(() => ({
 
         "& span.MuiRadio-root": {
             zIndex: 10,
-            padding: 0,
+            padding: "0px 5px",
         },
     }
 }))
@@ -24,8 +26,8 @@ const StyledRadio = React.forwardRef(({
     labelPlacement,
     disabled,
     value,
-    radioIcon,
-    checkedRadioIcon,
+    radioIcon = <RadioIcon />,
+    checkedRadioIcon= <CheckedRadioIcon />,
     onChange,
     onBlur,
     inputKey,

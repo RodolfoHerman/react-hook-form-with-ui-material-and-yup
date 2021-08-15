@@ -7,6 +7,7 @@ import Input from "../shared/inputs/Input/Input";
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import InputNumber from "../shared/inputs/InputNumber/InputNumber";
+import RadioGroup from "../shared/inputs/RadioGroup/RadioGroup";
 
 
 const tempoMesesErrorText = "Entre 2 e 24 meses";
@@ -32,6 +33,7 @@ const schema = yup.object().shape({
                 return number >= 2 && number <= 24;
             }
         ).required(tempoMesesErrorText),
+    sexo: yup.string().required("Sexo é obrigatório"),
 });
 
 const DemoPage1 = ({
@@ -96,6 +98,22 @@ const DemoPage1 = ({
                                 helperText={!!errors.tempoMeses ? "" : tempoMesesErrorText}
                                 fixedDecimalScale={false}
                                 onlyNumber
+                            />
+                        </Grid>
+                        <Grid item>
+                            <RadioGroup 
+                                name="sexo"
+                                title="Qual sexo?"
+                                options={[
+                                    {
+                                        label: "Masculino",
+                                        value: "masculino"
+                                    },
+                                    {
+                                        label: "Feminino",
+                                        value: "feminino"
+                                    },
+                                ]}
                             />
                         </Grid>
                     </Grid>
