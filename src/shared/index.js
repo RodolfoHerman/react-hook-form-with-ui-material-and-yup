@@ -4,6 +4,7 @@ import InputNumber from "./inputs/InputNumber/InputNumber";
 import RadioGroup from "./inputs/RadioGroup/RadioGroup";
 import TextArea from "./inputs/TextArea/TextArea";
 import Checkbox from "./inputs/CheckboxGroup/Checkbox";
+import CheckboxGroup from "./inputs/CheckboxGroup/CheckboxGroup";
 
 export {
     Stepper,
@@ -12,4 +13,5 @@ export {
     RadioGroup,
     TextArea,
     Checkbox,
+    CheckboxGroup,
 }

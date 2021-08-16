@@ -8,7 +8,7 @@ import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import InputNumber from "../shared/inputs/InputNumber/InputNumber";
 import RadioGroup from "../shared/inputs/RadioGroup/RadioGroup";
-import { Checkbox, TextArea } from "../shared";
+import { Checkbox, CheckboxGroup, TextArea } from "../shared";
 
 
 const tempoMesesErrorText = "Entre 2 e 24 meses";
@@ -37,6 +37,7 @@ const schema = yup.object().shape({
     sexo: yup.string().required("Sexo é obrigatório"),
     texto: yup.string().required("Texto é obrigatório"),
     termo: yup.boolean().nullable().oneOf([true], "Termo é obrigatório"),
+    contato: yup.array().min(1, "É necessário selecionar ao menos um").required("É necessário selecionar ao menos um"),
 });
 
 const DemoPage1 = ({
@@ -132,6 +133,29 @@ const DemoPage1 = ({
                                 title="Aceite do termo"
                                 name="termo"
                                 label="Aceito o termo de compartilhamento de informações"
+                            />
+                        </Grid>
+                        <Grid item>
+                            <CheckboxGroup
+                                title="Contato"
+                                name="contato"
+                                // value={["email"]}
+                                direction="row"
+                                items={[
+                                    {
+                                        label: "Whatsapp",
+                                        value: "whatsapp",
+                                    },
+                                    {
+                                        label: "Telefone",
+                                        value: "telefone",
+                                    },
+                                    {
+                                        label: "E-mail",
+                                        value: "email",
+                                        disabled: true,
+                                    }
+                                ]}
                             />
                         </Grid>
                     </Grid>
