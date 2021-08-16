@@ -8,7 +8,7 @@ import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import InputNumber from "../shared/inputs/InputNumber/InputNumber";
 import RadioGroup from "../shared/inputs/RadioGroup/RadioGroup";
-import { TextArea } from "../shared";
+import { Checkbox, TextArea } from "../shared";
 
 
 const tempoMesesErrorText = "Entre 2 e 24 meses";
@@ -36,6 +36,7 @@ const schema = yup.object().shape({
         ).required(tempoMesesErrorText),
     sexo: yup.string().required("Sexo é obrigatório"),
     texto: yup.string().required("Texto é obrigatório"),
+    termo: yup.boolean().nullable().oneOf([true], "Termo é obrigatório"),
 });
 
 const DemoPage1 = ({
@@ -124,6 +125,13 @@ const DemoPage1 = ({
                                 label="Informe um breve texto"
                                 minRows={2}
                                 maxRows={4}
+                            />
+                        </Grid>
+                        <Grid item>
+                            <Checkbox
+                                title="Aceite do termo"
+                                name="termo"
+                                label="Aceito o termo de compartilhamento de informações"
                             />
                         </Grid>
                     </Grid>
