@@ -18,7 +18,7 @@ import StyledRadio from "../StyledRadio";
 const useStyle = makeStyles(() => ({
     fieldSet: {
         width: "100%",
-        marginBottom: 5,
+        marginBottom: 15,
 
         "& legend": {
             fontSize: 13,

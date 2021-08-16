@@ -2,6 +2,8 @@ import React from "react";
 
 import { FormControlLabel, makeStyles, Checkbox } from '@material-ui/core';
 import clsx from "clsx";
+import CheckboxIcon from "../../assets/icons/CheckboxIcon";
+import CheckedboxIcon from "../../assets/icons/CheckedboxIcon";
 
 const useStyle = makeStyles(() => ({
     controlLabel: {
@@ -14,7 +16,7 @@ const useStyle = makeStyles(() => ({
 
         "& span.MuiCheckbox-root": {
             zIndex: 10,
-            padding: 0,
+            padding: "0px 5px",
         },
     }
 }))
@@ -25,8 +27,8 @@ const StyledCheckbox = React.forwardRef(({
     disabled,
     checked,
     value,
-    checkboxIcon,
-    checkedboxIcon,
+    checkboxIcon = <CheckboxIcon />,
+    checkedboxIcon = <CheckedboxIcon />,
     onChange,
     onBlur,
     inputKey,
