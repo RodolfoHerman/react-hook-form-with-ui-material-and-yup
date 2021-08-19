@@ -1,7 +1,6 @@
 import React, { memo } from "react";
 import NumberFormat from "react-number-format";
 
-import { useControlled } from "../hooks/useControlled";
 import InputHookFormWrapper from "../InputHookFormWrapper";
 import PropTypes from "prop-types";
 import StyledInput from "../StyledInput";
@@ -33,31 +32,16 @@ const InputNumberComponent = React.forwardRef(({
     errors,
     classes = {},
 }, ref) => {
-    const [valueProp, setvalueProp] = useControlled({
-        controlled: value,
-        defaultState: "",
-    });
-
     const getHelper = () => {
         return !!helperText
             ? helperText
             : errors[name]?.message;
     }
 
-    const handleInputChange = ({ floatValue, formattedValue }) => {
-        if(onlyNumber === true) {
-            setvalueProp(floatValue);
-            onChange(floatValue);
-        } else {
-            setvalueProp(formattedValue);
-            onChange(formattedValue);
-        }
-    }
-
     return (
         <NumberFormat 
-            onValueChange={handleInputChange}
-            value={valueProp}
+            onValueChange={onlyNumber ? onChange(floatValue) : onChange(formattedValue)}
+            value={value}
             name={name}
             label={label}
             value={value}
