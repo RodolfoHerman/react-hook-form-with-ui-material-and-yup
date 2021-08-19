@@ -40,7 +40,7 @@ const InputNumberComponent = React.forwardRef(({
 
     return (
         <NumberFormat 
-            onValueChange={onlyNumber ? onChange(floatValue) : onChange(formattedValue)}
+            onValueChange={(values) => onlyNumber ? onChange(values.floatValue) : onChange(values.formattedValue)}
             value={value}
             name={name}
             label={label}
@@ -63,7 +63,7 @@ const InputNumberComponent = React.forwardRef(({
             error={!!errors[name]}
             helperText={getHelper()}
             onBlur={onBlur}
-            inputRef={ref}
+            ref={ref}
             classes={classes}
             customInput={StyledInput}
         />
