@@ -73,7 +73,7 @@ const InputComponent = React.forwardRef(({
                     iconStart={iconStart}
                     iconEnd={iconEnd}
                     value={valueProp}
-                    inputRef={ref}
+                    ref={ref}
                     classes={classes}
                 />
             )}
@@ -82,7 +82,7 @@ const InputComponent = React.forwardRef(({
         <StyledInput 
             onChange={handleInputChange(onChange)}
             onBlur={onBlur}
-            inputRef={ref}
+            ref={ref}
             name={name}
             value={valueProp}
             placeholder={placeholder}

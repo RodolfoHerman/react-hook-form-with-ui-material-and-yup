@@ -45,7 +45,7 @@ const TextAreaComponent = React.forwardRef(({
         <StyledInput 
             onChange={handleInputChange(onChange)}
             onBlur={onBlur}
-            inputRef={ref}
+            ref={ref}
             name={name}
             value={valueProp}
             placeholder={placeholder}

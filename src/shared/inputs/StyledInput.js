@@ -44,11 +44,10 @@ const useStyle = makeStyles(() => ({
     }
 }))
 
-const StyledInput = (props) => {
+const StyledInput = React.forwardRef((props, ref) => {
     const className = useStyle();
 
     const {
-        inputRef,
         classes,
         maxRows,
         minRows,
@@ -90,8 +89,8 @@ const StyledInput = (props) => {
         }}
         variant="filled"
         fullWidth
-        inputRef={inputRef}
+        inputRef={ref}
     />
-}
+});
 
 export default StyledInput;
